@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>local.apple-wyoming</string>
+<key>CFBundleName</key><string>apple-wyoming</string>
+<key>NSSpeechRecognitionUsageDescription</key><string>Transcrire l'audio reçu d'un satellite Home Assistant.</string>
+</dict></plist>

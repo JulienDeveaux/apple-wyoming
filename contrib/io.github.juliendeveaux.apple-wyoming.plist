@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Per-user LaunchAgent for a manual (non-Homebrew) install:
+    swift build -c release && sudo install -m 755 .build/release/apple-wyoming /usr/local/bin/
+    cp contrib/io.github.juliendeveaux.apple-wyoming.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/io.github.juliendeveaux.apple-wyoming.plist
+  It must run in a logged-in GUI session (LaunchAgent, not LaunchDaemon): the Speech framework needs one.
+  With Homebrew, `brew services start apple-wyoming` generates the equivalent agent instead.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>io.github.juliendeveaux.apple-wyoming</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/apple-wyoming</string>
+    <string>--host</string>
+    <string>0.0.0.0</string>
+    <string>--port</string>
+    <string>10300</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <!-- Interactive: a Background agent is throttled by the system, which would add latency to every utterance. -->
+  <key>ProcessType</key>
+  <string>Interactive</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/apple-wyoming.log</string>
+  <key>StandardOutPath</key>
+  <string>/tmp/apple-wyoming.log</string>
+</dict>
+</plist>

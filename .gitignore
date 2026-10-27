@@ -1,0 +1,6 @@
+.build/
+.swiftpm/
+bench/corpus/
+*.log
+.DS_Store
+.idea/
